@@ -4,7 +4,8 @@ Dato un array di oggetti letterali con:
  - url dell’immagine
  - titolo
  - descrizione
-Creare un carosello.
+
+Creare un carosello con queste informazioni.
 
 ## Milestone 0:
 
