@@ -83,30 +83,30 @@ console.log(domItem);
 //////////////////
 prev.addEventListener('click', function () {
     console.log(`ho cliccato sopra`);
-    // domItem[immagineCorrente].classList.remove('active');
+    domItem[immagineCorrente].classList.remove('active');
     // domThuItem[immagineCorrente].classList.remove('attuale');
-    // immagineCorrente = (immagineCorrente - 1 + domItem.length) % domItem.length;
-    // domItem[immagineCorrente].classList.add('active');
+    immagineCorrente = (immagineCorrente - 1 + domItem.length) % domItem.length;
+    domItem[immagineCorrente].classList.add('active');
     // domThuItem[immagineCorrente].classList.add('attuale');
     // autoPlay;
-    if (immagineCorrente > 0) {
-        domItem[immagineCorrente].classList.remove(`active`);
-        immagineCorrente--;
-        domItem[immagineCorrente].classList.add(`active`);
-    }
+    // if (immagineCorrente > 0) {
+    //     domItem[immagineCorrente].classList.remove(`active`);
+    //     immagineCorrente--;
+    //     domItem[immagineCorrente].classList.add(`active`);
+    // }
   });
   
   next.addEventListener('click', function () {
     console.log(`ho cliccato sotto`);
-    // domItem[immagineCorrente].classList.remove('active');
+    domItem[immagineCorrente].classList.remove('active');
     // domThuItem[immagineCorrente].classList.remove('attuale');
-    // immagineCorrente = (immagineCorrente + 1) % domItem.length;
-    // domItem[immagineCorrente].classList.add('active');
+    immagineCorrente = (immagineCorrente + 1) % domItem.length;
+    domItem[immagineCorrente].classList.add('active');
     // domThuItem[immagineCorrente].classList.add('attuale');
     // autoPlay;
-    if (immagineCorrente < domItem.length - 1) {
-        domItem[immagineCorrente].classList.remove(`active`);
-        immagineCorrente++;
-        domItem[immagineCorrente].classList.add(`active`);
-    }
+    // if (immagineCorrente < domItem.length - 1) {
+    //     domItem[immagineCorrente].classList.remove(`active`);
+    //     immagineCorrente++;
+    //     domItem[immagineCorrente].classList.add(`active`);
+    // }
   });
