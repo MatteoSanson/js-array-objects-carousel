@@ -67,27 +67,61 @@ for (let i = 0; i < listaContent.length; i++) {
 
 const container = document.querySelector('.container');
 
+const thumbNails = document.createElement('div');
+thumbNails.classList.add('thumbNails');
+container.append(thumbNails);
+
+for (let i = 0; i < listaContent.length; i++) {
+  const thuItem = document.createElement('div');
+  thuItem.classList.add('thuItem');
+
+  if (i === immagineCorrente) {
+    thuItem.classList.add('attuale');
+  }
+
+  const thuImg = document.createElement('img');
+  thuImg.src = listaContent[i]["url immagine"];
+
+  thuItem.append(thuImg);
+  thumbNails.append(thuItem);
+}
+
 // bottoni prev e next
 const prev = document.createElement('div');
 prev.classList.add('prev');
-items.append(prev);
+thumbNails.append(prev);
 
 const next = document.createElement('div');
 next.classList.add('next');
-items.append(next);
+thumbNails.append(next);
+
+
+// const container = document.querySelector('.container');
+
+// // bottoni prev e next
+// const prev = document.createElement('div');
+// prev.classList.add('prev');
+// items.append(prev);
+
+// const next = document.createElement('div');
+// next.classList.add('next');
+// items.append(next);
 
 // 1) genero la costante listanodi dei div presenti nel dom con la classe che mi interessa
 const domItem = document.querySelectorAll('.item');
 console.log(domItem);
 
+const domThuItem = document.querySelectorAll('.thuItem');
+console.log(domThuItem);
+
 //////////////////
 prev.addEventListener('click', function () {
     console.log(`ho cliccato sopra`);
     domItem[immagineCorrente].classList.remove('active');
-    // domThuItem[immagineCorrente].classList.remove('attuale');
+    domThuItem[immagineCorrente].classList.remove('attuale');
     immagineCorrente = (immagineCorrente - 1 + domItem.length) % domItem.length;
     domItem[immagineCorrente].classList.add('active');
-    // domThuItem[immagineCorrente].classList.add('attuale');
+    domThuItem[immagineCorrente].classList.add('attuale');
     // autoPlay;
     // if (immagineCorrente > 0) {
     //     domItem[immagineCorrente].classList.remove(`active`);
@@ -99,10 +133,10 @@ prev.addEventListener('click', function () {
   next.addEventListener('click', function () {
     console.log(`ho cliccato sotto`);
     domItem[immagineCorrente].classList.remove('active');
-    // domThuItem[immagineCorrente].classList.remove('attuale');
-    immagineCorrente = (immagineCorrente + 1) % domItem.length;
+    domThuItem[immagineCorrente].classList.remove('attuale');
+    immagineCorrente = (immagineCorrente + 1 + domItem.length) % domItem.length;
     domItem[immagineCorrente].classList.add('active');
-    // domThuItem[immagineCorrente].classList.add('attuale');
+    domThuItem[immagineCorrente].classList.add('attuale');
     // autoPlay;
     // if (immagineCorrente < domItem.length - 1) {
     //     domItem[immagineCorrente].classList.remove(`active`);
@@ -110,3 +144,16 @@ prev.addEventListener('click', function () {
     //     domItem[immagineCorrente].classList.add(`active`);
     // }
   });
+
+  ///////////////////// click ad ogni immagine
+for (let i = 0; i < domThuItem.length; i++) {
+    domThuItem[i].addEventListener('click', function () {
+      console.log('ho cliccato', domThuItem[i]);
+      domItem[immagineCorrente].classList.remove('active');
+      domThuItem[immagineCorrente].classList.remove('attuale');
+      immagineCorrente = i;
+      domItem[immagineCorrente].classList.add('active');
+      domThuItem[immagineCorrente].classList.add('attuale');
+    //   autoPlay;
+    });
+  }
